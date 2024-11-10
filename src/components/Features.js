@@ -8,7 +8,6 @@ function Features(){
 
     return(
         <div class="container px-4 py-3">
-    <h2 class="pb-1">Key Features of HostelPro</h2>
 
     <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-4 py-3">
       <div class="col d-flex flex-column align-items-start gap-2">
