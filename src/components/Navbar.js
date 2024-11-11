@@ -18,7 +18,7 @@ function Navbar(){
               <Link to="/about" class="nav-link">About</Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link " >Status</a>
+            <Link to="/status" class="nav-link">Status</Link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Hostels</a>

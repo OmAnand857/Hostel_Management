@@ -11,7 +11,7 @@ import Calltoaction from "./Calltoaction";
 import Counter from "./Counter";
 import Footer from "./Footer";
 import About from "./About";
-
+import Status from "./Status";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
         <Navbar />
         <Hero />
         <Features />
-        <Calltoaction />
         <Counter />
+        <Calltoaction />
         <Footer />
         </>
       ),
@@ -32,6 +32,12 @@ const router = createBrowserRouter([
         <About />
       ),
     },
+    {
+      path: "status",
+      element: (
+        <Status />
+      ),
+    }
   ]);
 
 function App() {
