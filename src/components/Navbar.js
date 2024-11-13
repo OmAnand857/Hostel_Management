@@ -16,13 +16,20 @@ function Navbar(){
           <a class="navbar-brand col-lg-3 me-0 ms-4" href="#">HostelPro</a>
           <ul class="navbar-nav col-lg-6 justify-content-lg-end">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <Link to="/#" class="nav-link">Home</Link>
             </li>
             <li class="nav-item">
               <Link to="/about" class="nav-link">About</Link>
             </li>
-            <li class="nav-item">
-            <Link to="/status" class="nav-link">Status</Link>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/Status" data-bs-toggle="dropdown" aria-expanded="false">Status</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/status?section=application-status">Check Application Status</a></li>
+                <li><a class="dropdown-item" href="/status?section=room-availability">Check Room Availability</a></li>
+                <li><a class="dropdown-item" href="/status?section=complaint-status">Check Complaint Status</a></li>
+                <li><a class="dropdown-item" href="/status?section=application-history">Application History</a></li>
+                <li><a class="dropdown-item" href="/status?section=notices">Notices And Updates</a></li>
+              </ul>
             </li>
             <li class="nav-item">
             <Link to="/complaint" class="nav-link">Complaint</Link>
@@ -30,9 +37,9 @@ function Navbar(){
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Hostels</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Kanhar</a></li>
-                <li><a class="dropdown-item" href="#">Gopad</a></li>
-                <li><a class="dropdown-item" href="#">Indravati</a></li>
+                <li><a class="dropdown-item" href="/Hostels#kanhar">Kanhar</a></li>
+                <li><a class="dropdown-item" href="/Hostels#gopad">Gopad</a></li>
+                <li><a class="dropdown-item" href="/Hostels#indravati">Indravati</a></li>
               </ul>
             </li>
           </ul>

@@ -21,6 +21,8 @@ import { useContext } from "react";
 import { AuthProviderContext } from "./Context";
 import {supabase} from "../index.js"
 import Profile from "./Profile";
+import Hostels from "./Hostels";
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -72,6 +74,12 @@ const router = createBrowserRouter([
       element: (
         <Profile/>
       )
+    },
+    {
+      path: "Hostels",
+      element: (
+        <Hostels />
+      ),
     }
   ]);
 
