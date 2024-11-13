@@ -12,6 +12,8 @@ import Counter from "./Counter";
 import Footer from "./Footer";
 import About from "./About";
 import Status from "./Status";
+import Hostels from "./Hostels";
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -36,6 +38,12 @@ const router = createBrowserRouter([
       path: "status",
       element: (
         <Status />
+      ),
+    },
+    {
+      path: "Hostels",
+      element: (
+        <Hostels />
       ),
     }
   ]);

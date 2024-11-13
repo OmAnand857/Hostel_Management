@@ -30,9 +30,9 @@ function Navbar(){
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Hostels</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Kanhar</a></li>
-                <li><a class="dropdown-item" href="#">Gopad</a></li>
-                <li><a class="dropdown-item" href="#">Indravati</a></li>
+                <li><a class="dropdown-item" href="/Hostels#kanhar">Kanhar</a></li>
+                <li><a class="dropdown-item" href="/Hostels#gopad">Gopad</a></li>
+                <li><a class="dropdown-item" href="/Hostels#indravati">Indravati</a></li>
               </ul>
             </li>
           </ul>

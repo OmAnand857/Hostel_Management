@@ -91,19 +91,6 @@ const StatusPage = () => {
       <>
         <Navbar />
         <div className="container py-5">
-          {/* <h1 className="text-center mb-4">Status</h1> */}
-
-          {/* <section ref={applicationStatusRef} className="mb-5">
-          <h2>Check Application Status</h2>
-          <div className="form-inline py-3">
-            <input
-              type="text"
-              className="form-control mr-2"
-              placeholder="Enter Application ID"
-            />
-          </div>
-          <button className="btn btn-primary">Check Status</button>
-        </section> */}
 
         {/* Check Application Status and Check Complaint Status Sections */}
         <section className="row mb-5">
