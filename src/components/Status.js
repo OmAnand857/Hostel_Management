@@ -1,9 +1,36 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react'; 
+import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar.js';
 import Footer from "./Footer.js"
 
 const StatusPage = () => {
+    const location = useLocation();
+    const applicationStatusRef = useRef(null);
+    const complaintStatusRef = useRef(null);
+    const roomAvailabilityRef = useRef(null);
+    const applicationHistoryRef = useRef(null);
+    const noticesRef = useRef(null);
+
+
+    useEffect(() => {
+      const queryParams = new URLSearchParams(location.search);
+      const section = queryParams.get('section');
+      
+      if (section === 'application-status' && applicationStatusRef.current) {
+          applicationStatusRef.current.scrollIntoView({ behavior: 'smooth' });
+      } else if (section === 'complaint-status' && complaintStatusRef.current) {
+        complaintStatusRef.current.scrollIntoView({ behavior: 'smooth' });
+      } else if (section === 'room-availability' && roomAvailabilityRef.current) {
+          roomAvailabilityRef.current.scrollIntoView({ behavior: 'smooth' });
+      } else if (section === 'application-history' && applicationHistoryRef.current) {
+          applicationHistoryRef.current.scrollIntoView({ behavior: 'smooth' });
+      } else if (section === 'notices' && noticesRef.current) {
+          noticesRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+  }, [location]);
+
+
     // Sample static data for demonstration
     const applicationHistory = [
         { id: '001', info: 'Indravati - Room 101', status: 'Approved', date: '2024-10-01' },
@@ -66,7 +93,7 @@ const StatusPage = () => {
         <div className="container py-5">
           {/* <h1 className="text-center mb-4">Status</h1> */}
 
-          <section className="mb-5">
+          {/* <section ref={applicationStatusRef} className="mb-5">
           <h2>Check Application Status</h2>
           <div className="form-inline py-3">
             <input
@@ -76,10 +103,37 @@ const StatusPage = () => {
             />
           </div>
           <button className="btn btn-primary">Check Status</button>
-        </section>
+        </section> */}
+
+        {/* Check Application Status and Check Complaint Status Sections */}
+        <section className="row mb-5">
+            <div ref={applicationStatusRef} className="col-md-6 mb-3">
+              <h2>Check Application Status</h2>
+              <div className="form-inline py-3">
+                <input
+                  type="text"
+                  className="form-control mr-2"
+                  placeholder="Enter Application ID"
+                />
+              </div>
+              <button className="btn btn-primary">Check Status</button>
+            </div>
+
+            <div ref={complaintStatusRef} className="col-md-6 mb-3">
+              <h2>Check Complaint Status</h2>
+              <div className="form-inline py-3">
+                <input
+                  type="text"
+                  className="form-control mr-2"
+                  placeholder="Enter Complaint ID"
+                />
+              </div>
+              <button className="btn btn-primary">Check Status</button>
+            </div>
+          </section>
   
           {/* Room Availability */}
-          <section className="mb-5">
+          <section ref={roomAvailabilityRef} className="mb-5">
           <h2>Hostel Room Availability</h2>
           <div className="row">
             {roomAvailability.map((hostel, index) => (
@@ -108,7 +162,7 @@ const StatusPage = () => {
         </section>
   
           {/* Application History */}
-          <section className="mb-5">
+          <section ref={applicationHistoryRef} className="mb-5">
           <h2>Application History</h2>
           <table className="table table-striped">
             <thead>
@@ -156,7 +210,7 @@ const StatusPage = () => {
 
         <div className="container py-5">
           {/* Notices and Updates */}
-          <section className="mb-5">
+          <section ref={noticesRef} className="mb-5">
             <h2>Notices and Updates</h2>
             <p>HostelPro is lauching their website soon!</p>
             <p>Stay tuned for any important notices or updates related to HostelPro and hostel management.</p>
