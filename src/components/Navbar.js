@@ -40,6 +40,7 @@ function Navbar(){
                 <li><a class="dropdown-item" href="/Hostels#kanhar">Kanhar</a></li>
                 <li><a class="dropdown-item" href="/Hostels#gopad">Gopad</a></li>
                 <li><a class="dropdown-item" href="/Hostels#indravati">Indravati</a></li>
+                  <li><a class="dropdown-item" href="/Hostels#Shivnath">Shivnath</a></li>
               </ul>
             </li>
           </ul>
