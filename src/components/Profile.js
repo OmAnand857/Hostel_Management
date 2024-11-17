@@ -4,7 +4,88 @@ import { useContext } from 'react';
 import { AuthProviderContext } from './Context';
 import Button from '@mui/material/Button';
 import Modal from './Modal';
+import { supabase } from "../index.js"
 
+function Complaint_card(  { complaints } ){
+
+  const getStatusBadge = (status, type) => {
+    let badgeClass = '';
+    if (type === 'application') {
+      switch (status) {
+        case true:
+          badgeClass = 'bg-success text-white';
+          break;
+        case false:
+          badgeClass = 'bg-danger text-white';
+          break;
+        default:
+          badgeClass = 'bg-warning text-dark';
+      }
+    } else {
+      switch (status) {
+        case 'resolved':
+          badgeClass = 'bg-success text-white';
+          break;
+        case 'in-progress':
+          badgeClass = 'bg-primary text-white';
+          break;
+        default:
+          badgeClass = 'bg-warning text-dark';
+      }
+    }
+    return (
+      <span className={`badge rounded-pill ${badgeClass}`}>
+        { status ? "Resolved" : "In Progress" }
+      </span>
+    );
+  };
+
+  
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case true:
+        return <CheckCircle2 className="text-success" style={{ width: '20px', height: '20px' }} />;
+      case false:
+        return <Clock className="text-primary" style={{ width: '20px', height: '20px' }} />;
+      default:
+        return <AlertCircle className="text-warning" style={{ width: '20px', height: '20px' }} />;
+    }
+  };
+
+  return (  
+    <div className="card border-0 shadow-sm">
+      <div className="card-body">
+        <h2 className="card-title h5 mb-4">Complaints History</h2>
+        <div className="d-flex flex-column gap-3">
+          {complaints && complaints.map((complaint) => (
+            <div key={complaint.id} className="card border">
+              <div className="card-body">
+                <div className="d-flex justify-content-between align-items-center">
+                  <div className="d-flex align-items-center gap-2">
+                    {getStatusIcon(complaint.resolved)}
+                    <h4 className="h6 mb-0">{complaint.complaint_category}</h4>
+                  </div>
+                  {getStatusBadge(complaint.resolved, 'complaint')}
+                </div>
+                <div>
+                  <h6 className="mt-3">{complaint.complaint_type}</h6>
+                  <div className="card-text">{complaint.complaint_description}</div>
+                  </div>
+                <small className="text-muted d-block mt-2">
+                  Submitted on: {new Date(complaint.created_at).toLocaleDateString()}
+                </small>
+                <small className="text-muted d-block mt-2">
+                  Urgency level: {complaint.urgency_level}
+                </small>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+
+}
 
 
 
@@ -12,8 +93,30 @@ function App() {
 
   const { user , setuser } = useContext(AuthProviderContext);
   const [ modal , setModal ] = useState( false );
+  const [ complaint , setComplaint ] = useState( null );
+  useEffect( () => {
 
-  console.log(user, "user")
+    async function getRowsByEmail(emailid) {
+      const { data, error } = await supabase
+        .from('complaints_table')  // Your table name
+        .select('*')    // Select all columns
+        .eq('email', emailid)  // Filter by emailid
+      
+      if (error) {
+        console.error('Error fetching rows:', error)
+        return null
+      }
+      console.log( data , " data hai ")
+      return data
+    }
+
+    getRowsByEmail(user?.email).then(data => {
+      console.log('Rows for emailid:', data)
+      setComplaint(data)
+    })
+
+  },[user])
+
   // Hardcoded student data
   const student = {
     id: '1',
@@ -46,10 +149,10 @@ function App() {
     let badgeClass = '';
     if (type === 'application') {
       switch (status) {
-        case 'approved':
+        case 'resolved':
           badgeClass = 'bg-success text-white';
           break;
-        case 'rejected':
+        case 'in-progress':
           badgeClass = 'bg-danger text-white';
           break;
         default:
@@ -69,11 +172,13 @@ function App() {
     }
     return (
       <span className={`badge rounded-pill ${badgeClass}`}>
-        {status.charAt(0).toUpperCase() + status.slice(1)}
+        { status ? "Resolved" : "In Progress" }
       </span>
     );
   };
 
+  
+ 
   const getStatusIcon = (status) => {
     switch (status) {
       case 'resolved':
@@ -160,30 +265,9 @@ function App() {
           </div>
         </div>
 
-        {/* Complaints Section */}
-        <div className="card border-0 shadow-sm">
-          <div className="card-body">
-            <h2 className="card-title h5 mb-4">Complaints History</h2>
-            <div className="d-flex flex-column gap-3">
-              {student.complaints.map((complaint) => (
-                <div key={complaint.id} className="card border">
-                  <div className="card-body">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="d-flex align-items-center gap-2">
-                        {getStatusIcon(complaint.status)}
-                        <h4 className="h6 mb-0">{complaint.title}</h4>
-                      </div>
-                      {getStatusBadge(complaint.status, 'complaint')}
-                    </div>
-                    <small className="text-muted d-block mt-2">
-                      Submitted on: {new Date(complaint.created_at).toLocaleDateString()}
-                    </small>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* Complaints */}
+      <Complaint_card complaints = { complaint }/>
+      
       </div>
     </div>
     <div class="d-flex justify-content-center mt-1 mb-5">

@@ -1,0 +1,19 @@
+.hero-section {
+    background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+  }
+  
+  .card {
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 15px;
+    }
+  }

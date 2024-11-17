@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { AuthProviderContext } from "./Context";
 function Navbar(){
   const { user , setuser } = useContext(AuthProviderContext);
-  console.log(user, "navbar_user")
     return (
         <nav class="navbar navbar-expand-lg bg-body-tertiary " >
       <div class="container-fluid">
@@ -52,10 +51,8 @@ function Navbar(){
               <li class="nav-item dropdown btn btn-primary " style={{listStyle:"none"}} >
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
               <ul class="dropdown-menu">
-                <li><Link class="dropdown-item" to='auth/login/guest'>Guest Login</Link></li>
                 <li><Link class="dropdown-item" to='auth/login/student'>Student Login</Link></li>
                 <li><Link class="dropdown-item" to='auth/login/admin'>Admin Login</Link></li>
-                <li><Link class="dropdown-item" to='auth/login/hr'>HR Login</Link></li>
               </ul>
             </li>
             }
