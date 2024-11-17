@@ -13,6 +13,7 @@ const HostelsPage = () => {
     const kanharRef = useRef(null);
     const gopadRef = useRef(null);
     const indravatiRef = useRef(null);
+      const ShivnathRef = useRef(null);
 
     // Scroll to the correct section when the component mounts or when the location changes
     useEffect(() => {
@@ -23,6 +24,9 @@ const HostelsPage = () => {
             gopadRef.current.scrollIntoView({ behavior: 'smooth' });
         } else if (hash === '#indravati' && indravatiRef.current) {
             indravatiRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+        else if (hash === '#Shivnath' && ShivnathRef.current) {
+            ShivnathRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [location]);
 
@@ -102,6 +106,23 @@ const HostelsPage = () => {
                 </div>
                 <div className="col-md-6 d-flex justify-content-center">
                     <img src={indravatiImage} alt="Indravati Hostel" className="img-fluid" style={imageStyle} />
+                </div>
+            </div>
+             {/* MSH Hostel Section */}
+            <div ref={ShivnathRef} style={sectionStyle} className="d-flex flex-md-row flex-column align-items-center">
+                <div className="col-md-6" style={textStyle}>
+                    <h2>Shivnath Hostel (MSH)</h2>
+                    <p>
+                       Shivnath Hostel, also known as the Married Students Hostel (MSH), is a dedicated accommodation facility at IIT Bhilai for married students. The hostel is designed to provide a comfortable and family-friendly living environment, supporting up to a specific number of families.
+
+Each apartment in the hostel is well-furnished with essential amenities, including a bed, study table, chairs, wardrobe, and a functional kitchen space. Residents benefit from facilities like air conditioning, Wi-Fi, and 24/7 high-speed internet.
+
+The hostel environment is secure and welcoming, with additional provisions for maintenance and security to ensure a smooth and comfortable living experience for the residents. 
+                    </p>
+                    <a class="btn btn-primary" href="/status?section=room-availability">Check Room Availability</a>
+                </div>
+                <div className="col-md-6 d-flex justify-content-center">
+                    <img src={kanharImage} alt="Shivnath Hostel" className="img-fluid" style={imageStyle} />
                 </div>
             </div>
         </div>

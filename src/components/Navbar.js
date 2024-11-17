@@ -39,6 +39,7 @@ function Navbar(){
                 <li><a class="dropdown-item" href="/Hostels#kanhar">Kanhar</a></li>
                 <li><a class="dropdown-item" href="/Hostels#gopad">Gopad</a></li>
                 <li><a class="dropdown-item" href="/Hostels#indravati">Indravati</a></li>
+                  <li><a class="dropdown-item" href="/Hostels#Shivnath">Shivnath</a></li>
               </ul>
             </li>
           </ul>
@@ -51,8 +52,8 @@ function Navbar(){
               <li class="nav-item dropdown btn btn-primary " style={{listStyle:"none"}} >
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
               <ul class="dropdown-menu">
-                <li><Link class="dropdown-item" to='auth/login/student'>Student Login</Link></li>
-                <li><Link class="dropdown-item" to='auth/login/admin'>Admin Login</Link></li>
+                <li><Link class="dropdown-item" to='/auth/login/student'>Student Login</Link></li>
+                <li><Link class="dropdown-item" to='/auth/login/admin'>Admin Login</Link></li>
               </ul>
             </li>
             }
