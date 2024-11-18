@@ -22,7 +22,7 @@ const CheckoutForm = () => {
     const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/success", // Make sure this URL is correct
+        return_url: "https://hostel-management-roan.vercel.app/success", // Make sure this URL is correct
       },
     });
 
