@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import kanharImage from '../static/assets/kanhar.webp'; 
 import gopadImage from '../static/assets/Gopad.webp';  
 import indravatiImage from '../static/assets/Indravati.webp'; 
-import Navbar from './Navbar.js';
 import Footer from "./Footer.js"
 
 const HostelsPage = () => {
@@ -53,7 +52,6 @@ const HostelsPage = () => {
     return (
 
         <>
-        <Navbar />
         <div className="container py-5">
             {/* Kanhar Hostel Section */}
             <div ref={kanharRef} style={sectionStyle} className="d-flex flex-md-row flex-column align-items-center">

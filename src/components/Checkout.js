@@ -30,6 +30,7 @@ const CheckoutForm = () => {
     if (result.error) {
       console.log(result.error.message);
       alert("Payment failed: " + result.error.message); // Show user-friendly message
+      setPaymentInProgress(false);
     } else {
       alert('Payment successful!');
       setPaymentInProgress(false);

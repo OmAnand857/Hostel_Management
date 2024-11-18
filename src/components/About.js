@@ -1,11 +1,9 @@
 import React from 'react';
-import NavBar from "./Navbar.js"
 import Footer from "./Footer.js"
 function About() {
 
     return (
         <>
-        <NavBar />
         <div className="container py-2">
             <section className="text-center mb-5">
                 <h1 className="display-4 fw-bold text-body-emphasis">About HostelPro</h1>

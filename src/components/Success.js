@@ -99,7 +99,7 @@ const Success = () => {
                   <strong>Transaction ID:</strong> {paymentData.transaction_id}
                 </div>
                 <div className="list-group-item">
-                  <strong>Amount:</strong> ${(paymentData.amount / 100).toFixed(2)}
+                  <strong>Amount:</strong> Rs{(paymentData.amount / 100).toFixed(2)}
                 </div>
                 <div className="list-group-item">
                   <strong>Status:</strong> {paymentData.status}

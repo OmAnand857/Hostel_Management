@@ -1,7 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react'; 
 import { useLocation , Link } from 'react-router-dom';
-import Navbar from './Navbar.js';
 import Footer from "./Footer.js"
 import { useContext } from 'react';
 import { AuthProviderContext } from './Context';
@@ -242,7 +241,6 @@ const handleSubmitApplication = async (e) => {
 
     return (
       <>
-        <Navbar />
         <div className="container py-5">
 
         {/* Check Application Status and Check Complaint Status Sections */}

@@ -48,19 +48,28 @@ const router = createBrowserRouter([
     {
       path: "about",
       element: (
+        <>
+        <Navbar/>
         <About />
+        </>
       ),
     },
     {
       path: "status",
       element: (
+        <>
+        <Navbar/>
         <Status />
+        </>
       ),
     },
     {
       path: "status/:hosteltype",
       element: (
+        <>
+        <Navbar/>
         <HostelRoomList/>
+        </>
       ),
     },
     {
@@ -80,25 +89,37 @@ const router = createBrowserRouter([
     {
       path: "complaint",
       element: (
+        <>
+        <Navbar/>
         <Complaint/>
+        </>
       ),
     },
     {
       path: "profile",
       element: (
+        <>
+        <Navbar/>
         <Profile/>
+        </>
       )
     },
     {
       path: "Hostels",
       element: (
+        <>
+        <Navbar/>
         <Hostels />
+        </>
       ),
     },
     {
       path: "status/:hosteltype/booknow/:room_id",
       element: (
+        <>
+        <Navbar/>
         <Booknow />
+        </>
       ),
     },
     {
@@ -111,7 +132,10 @@ const router = createBrowserRouter([
     {
       path: "success",
       element: (
+        <>
+        <Navbar/>
         <Success />
+        </>
       ),
     },
     {

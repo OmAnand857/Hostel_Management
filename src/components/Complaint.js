@@ -11,7 +11,7 @@ function Complaint() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState('');
-
+  const [raisingComplaint, setRaisingComplaint] = useState(false);
   const [formData, setFormData] = useState({
     complaintType: '',
     complaintCategory: '',
@@ -103,7 +103,7 @@ function Complaint() {
       navigate("/")
       return
     }
-    
+    setRaisingComplaint(true)
     // FIRST LET'S UPLOAD FILE   
     let filelink = null ;
     if(formData.attachment){
@@ -141,8 +141,10 @@ function Complaint() {
       .select()
       if(error){
         alert( error.message )
+        setRaisingComplaint(false)
       }else{
         alert("Complaint raised successfully")
+        setRaisingComplaint(false)
         navigate("/profile")
       }
     }
@@ -265,9 +267,15 @@ function Complaint() {
                   )}
                 </div>
 
-                <button className="btn btn-primary w-100 py-2" type="submit">
+               { raisingComplaint ?
+               <button className="btn btn-primary w-100 py-2"  type="submit" disabled>
+                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  <span className="visually-hidden">Raising Complaint</span>
+                </button>
+               : <button className="btn btn-primary w-100 py-2"  type="submit" >
                   Raise Complaint
                 </button>
+              }
 
                 <p className="mt-5 mb-3 text-body-secondary text-center">
                   Please note that all complaints will be reviewed and responded to within 24 hours.
