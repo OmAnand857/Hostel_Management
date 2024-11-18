@@ -4,9 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import config from '../configenv.json';
 
-const stripePromise = loadStripe(config.S_SK);
+const stripePromise = loadStripe(process.env.REACT_APP_S_SK);
 
 const CheckoutForm = () => {
   const stripe = useStripe();

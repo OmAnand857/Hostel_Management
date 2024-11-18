@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthProviderContext } from "./Context";
 import { supabase } from '../index.js';
-import config  from "../configenv.json"
 import { v4 as uuidv4 } from 'uuid';
 
 function Complaint() {
@@ -84,7 +83,7 @@ function Complaint() {
         throw new Error(error.message);
       }
       else{
-          fileurl = `https://${config.PR_ID}.supabase.co/storage/v1/object/public/complaint_bucket/${filePath}`
+          fileurl = `https://${process.env.REACT_APP_PR_ID}.supabase.co/storage/v1/object/public/complaint_bucket/${filePath}`
       }
       return fileurl;
     } catch (error) {
@@ -109,6 +108,7 @@ function Complaint() {
     if(formData.attachment){
       if( formData.fileError ){
         alert(formData.fileError)
+        setRaisingComplaint(false)
         return
       }
       else{
@@ -128,6 +128,7 @@ function Complaint() {
 
     if ( formData.attachment && !filelink ){
       alert("Error uploading file try again")
+      setRaisingComplaint(false)
     }
     else{
       complaintObject.fileLink = filelink

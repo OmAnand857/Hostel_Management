@@ -4,10 +4,9 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {AuthProviderFunction,FormdataProviderFunction} from "./components/Context"
 import { createClient } from '@supabase/supabase-js'
-import config from "./configenv.json"
 
 
-export const supabase = createClient(config.SP_U, config.SP_K)
+export const supabase = createClient(process.env.REACT_APP_SP_U, process.env.REACT_APP_SP_K)
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
