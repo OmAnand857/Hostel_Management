@@ -41,7 +41,7 @@ const AdminComplaints = () => {
   const handleResolve = async (complaintId) => {
     // Send a request to your backend to resolve the complaint
     try {
-      const response = await axios.post('http://localhost:5173/admin/resolve-complaint', {
+      const response = await axios.post('https://hostel-management-backend-hoym.onrender.com/admin/resolve-complaint', {
         complaint_id: complaintId,
       },
       {

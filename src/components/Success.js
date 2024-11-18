@@ -16,7 +16,7 @@ const Success = () => {
     const fetchPaymentDetails = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5173/get-payment-details/${paymentIntentId}`);
+        const response = await axios.get(`https://hostel-management-backend-hoym.onrender.com/get-payment-details/${paymentIntentId}`);
         setPaymentDetails(response.data);
         setLoading(false);
       } catch (error) {

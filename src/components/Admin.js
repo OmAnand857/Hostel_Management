@@ -4,7 +4,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import ReportIcon from '@mui/icons-material/Report';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import LogoutIcon from '@mui/icons-material/Logout';
-import './App.css';
+import "../styles/App.css";
 import { Link } from 'react-router-dom';
 import { AuthProviderContext } from './Context';
 import { useContext } from 'react';

@@ -71,7 +71,7 @@ function Login(){
             alert("Please fill all the fields")
             return
         }
-        try{const result = await axios.post("http://localhost:5173/admin/login",credentials)
+        try{const result = await axios.post("https://hostel-management-backend-hoym.onrender.com/admin/login",credentials)
         if( result?.status === 200 ){
             alert("success")
             setuser(result?.data)

@@ -79,7 +79,7 @@ export default function Checkout() {
 
     const getClientSecret = async () => {
       try {
-        const response = await fetch("http://localhost:5173/create-payment-intent", {
+        const response = await fetch("https://hostel-management-backend-hoym.onrender.com/create-payment-intent", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

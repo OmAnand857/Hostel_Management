@@ -42,7 +42,7 @@ const ApplicationList = () => {
     // Send a request to your backend to resolve the application
     console.log( user )
     try {
-      const response = await axios.post('http://localhost:5173/admin/resolve-application', {
+      const response = await axios.post('https://hostel-management-backend-hoym.onrender.com/admin/resolve-application', {
         application_id: applicationId,
       },
       {
