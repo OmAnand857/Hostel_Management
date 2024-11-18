@@ -123,6 +123,7 @@ const handleSubmitApplication = async (e) => {
 
       if (error) {
           console.error('Error submitting application:', error);
+          setLoadingSubmit(false);
           alert('Failed to submit application. Please try again later.');
       } else {
           alert('Application submitted successfully!');
