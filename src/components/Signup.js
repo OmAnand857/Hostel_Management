@@ -78,19 +78,7 @@ const Signup = () => {
           }else{
             alert("success")
           }
-        // const signup_promise = axios.post(`http://localhost:5173/${user_type}/oauth`, {
-        //     provider: PROVIDER,
-        // }, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // });
-        // signup_promise.then((response) => {
-        //     // Redirect the user to the OAuth page
-        //     window.location.href = response.data.url;
-        // }).catch((error) => {
-        //     console.log(error);
-        // })
+
     }
 
     return (

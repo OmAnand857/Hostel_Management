@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect , useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProviderContext } from "./Context";
 function Navbar(){
   const { user , setuser } = useContext(AuthProviderContext);
+  const [ admin , setadmin ] = useState(false)
+  useEffect(() => {
+    if (user?.type === "admin") {
+      setadmin(true)
+    }
+  },[user])
     return (
         <nav class="navbar navbar-expand-lg bg-body-tertiary " >
       <div class="container-fluid">
@@ -13,7 +19,7 @@ function Navbar(){
 
         <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
           <a class="navbar-brand col-lg-3 me-0 ms-4" href="#">HostelPro</a>
-          <ul class="navbar-nav col-lg-6 justify-content-lg-end">
+          <ul class="navbar-nav col-lg-6 justify-content-lg-end" >
             <li class="nav-item">
             <Link to="/#" class="nav-link">Home</Link>
             </li>
@@ -47,7 +53,7 @@ function Navbar(){
 
             {
               user ? 
-              <Link to="/profile" class="btn btn-primary" >Profile</Link> 
+              <Link to={ admin ? "/admin" : "/profile"} class="btn btn-primary" >Profile</Link> 
               :
               <li class="nav-item dropdown btn btn-primary " style={{listStyle:"none"}} >
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Login</a>

@@ -29,6 +29,7 @@ import Success from "./Success";
 import Admin from "./Admin";
 import Adminapplications from "./Adminapplications";
 import Admincomplaints from "./Admincomplaints";
+import PrivateRoute from "./Privateroute.js";
 
 const router = createBrowserRouter([
     {
@@ -114,22 +115,22 @@ const router = createBrowserRouter([
       ),
     },
     {
-      path: "admin",
-      element: (
-        <Admin />
-      ),
-    },
-    {
-      path: "admin/applications",
-      element: (
-        <Adminapplications />
-      )
-    },
-    {
-      path : "admin/complaints",
-      element : (
-        <Admincomplaints/>
-      )
+      path: '/admin',
+      element: <PrivateRoute role="admin" />, // Protected route
+      children: [
+        {
+          path: '',
+          element: <Admin />, // This renders when user visits /admin
+        },
+        {
+          path: 'complaints',
+          element: <Admincomplaints/>, // This renders for /admin/complaints
+        },
+        {
+          path : 'applications',
+          element : <Adminapplications/>
+        }
+      ],
     }
   ]);
 

@@ -23,10 +23,10 @@ function Complaint_card(  { complaints } ){
       }
     } else {
       switch (status) {
-        case 'resolved':
+        case true :
           badgeClass = 'bg-success text-white';
           break;
-        case 'in-progress':
+        case false:
           badgeClass = 'bg-primary text-white';
           break;
         default:
@@ -210,9 +210,6 @@ function App() {
               <div className="col">
                 <h1 className="h3 mb-1">{user ? user.user_metadata.full_name : "<name>"}</h1>
                 <p className="text-muted mb-0">{ user ? user.user_metadata.email : "<email>"}</p> 
-              </div>
-              <div className="col-auto">
-                {getStatusBadge(student.application_status, 'application')}
               </div>
             </div>
           </div>

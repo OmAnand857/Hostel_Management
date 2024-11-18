@@ -11,6 +11,7 @@ const stripePromise = loadStripe(config.S_SK);
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+  const[ paymentInProgress, setPaymentInProgress ] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +19,7 @@ const CheckoutForm = () => {
     if (!stripe || !elements) {
       return; // Stripe.js hasn't loaded yet, prevent submission
     }
-
+    setPaymentInProgress(true);
     const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -31,6 +32,7 @@ const CheckoutForm = () => {
       alert("Payment failed: " + result.error.message); // Show user-friendly message
     } else {
       alert('Payment successful!');
+      setPaymentInProgress(false);
       localStorage.setItem('paymentSuccess', JSON.stringify(result));
     }
   };
@@ -38,7 +40,7 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
-      <button className="btn btn-primary mt-3" disabled={!stripe}>Submit</button>
+      <button className="btn btn-primary mt-3" disabled={!stripe || paymentInProgress}> {   paymentInProgress ? "Processing Payment..." : "Submit"}</button>
     </form>
   );
 };

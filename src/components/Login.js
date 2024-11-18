@@ -4,6 +4,9 @@ import axios from "axios"
 import { supabase } from "../index"
 import { useContext } from "react"
 import { AuthProviderContext } from "./Context"
+import Button from '@mui/material/Button';
+import GoogleIcon from '@mui/icons-material/Google';
+import GitHubIcon from '@mui/icons-material/GitHub';
 function Login(){
 
     const user_type = useParams().userType
@@ -69,18 +72,33 @@ function Login(){
             return
         }
         try{const result = await axios.post("http://localhost:5173/admin/login",credentials)
-        if( result.status === 200 ){
+        if( result?.status === 200 ){
             alert("success")
-            setuser(result.data)
-            localStorage.setItem("admin",JSON.stringify(result.data))
+            setuser(result?.data)
+            localStorage.setItem("admin",JSON.stringify(result?.data))
         }
       }
         catch(error){
-            alert( error.response.data.message )
+            alert( error.response?.data?.message )
         }
     }
 
  
+    // oauth
+    const handle_oauth = async (e) => {
+      e.preventDefault();
+      const PROVIDER = e.target.name
+      window.localStorage.setItem("provider",PROVIDER)
+      let { data, error } = await supabase.auth.signInWithOAuth({
+          provider: PROVIDER
+        })
+        if(error){
+          console.log(error)
+        }else{
+          alert("success")
+        }
+
+  }
 
 
 
@@ -106,6 +124,30 @@ function Login(){
               Remember me
             </label>
           </div>
+           {/* Google and GitHub Login buttons */}
+          { user_type !== "admin" &&  <div className="mt-3 text-center">
+                    <Button
+                        variant="outlined"
+                        fullWidth
+                        startIcon={<GoogleIcon />}
+                        name="google"
+                        style={{ marginBottom: '10px', color: '#4285F4', borderColor: '#4285F4' }}
+                        onClick={handle_oauth} 
+                    >
+                        Sign up with Google
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        fullWidth
+                        startIcon={<GitHubIcon />}
+                        style={{ color: '#333', borderColor: '#333' }}
+                        name="github"
+                        onClick={handle_oauth} 
+                    >
+                        Sign up with GitHub
+                    </Button>
+                </div>
+            }
           <button class="btn btn-primary w-100 py-2" type="submit" onClick={ user_type === "admin" ? handle_admin_login : handle_login}>Sign in</button>
           { user_type !== "admin" &&
           <>   
