@@ -68,11 +68,15 @@ function Login(){
             alert("Please fill all the fields")
             return
         }
-        const result = await axios.post("http://localhost:5173/admin/login",credentials)
+        try{const result = await axios.post("http://localhost:5173/admin/login",credentials)
         if( result.status === 200 ){
             alert("success")
             setuser(result.data)
             localStorage.setItem("admin",JSON.stringify(result.data))
+        }
+      }
+        catch(error){
+            alert( error.response.data.message )
         }
     }
 
